@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    triggers {
+        GenericTrigger(
+            token: 'ROLLBACK_A87B89_TOKEN'
+        )
+    }
+    stages {
+        stage('Switch Traffic to Stable (Green)') {
+            steps {
+                sh 'kubectl patch service sentiment-api-service -p \'{"spec":{"selector":{"slot":"green"}}}\''
+            }
+        }
+    }
+}
