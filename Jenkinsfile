@@ -3,6 +3,9 @@ pipeline {
     triggers {
         GenericTrigger(token: 'CI_TRIGGER_A87B89')
     }
+    options {
+        skipDefaultCheckout()
+    }
     environment {
         DOCKERHUB_USER = 'mubashirhassan'
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
@@ -56,12 +59,6 @@ pipeline {
                 sh 'kubectl apply -f k8s/service.yaml'
                 sh 'kubectl rollout status deployment/sentiment-blue-deployment --timeout=180s'
             }
-        }
-    }
-    post {
-        always {
-            sh 'docker stop ${APP_CONTAINER} || true'
-            sh 'docker rm ${APP_CONTAINER} || true'
         }
     }
 }
