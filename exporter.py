@@ -1,8 +1,9 @@
 import time
 import requests
+import os
 from prometheus_client import start_http_server, Gauge
 
-APP_URL = "http://localhost:32500/api/latest-confidence"
+APP_URL = os.environ.get("APP_URL", "http://192.168.49.2:32500/api/latest-confidence")
 CONFIDENCE_GAUGE = Gauge(
     'prediction_confidence_score',
     'Latest ML model prediction confidence score'
