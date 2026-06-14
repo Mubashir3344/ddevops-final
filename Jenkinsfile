@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    triggers {
+        GenericTrigger(token: 'CI_TRIGGER_A87B89')
+    }
     environment {
         DOCKERHUB_USER = 'mubashirhassan'
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
