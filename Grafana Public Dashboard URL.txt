@@ -1,1 +1,1 @@
-PLACEHOLDER - Will be updated after Grafana dashboard is created
+http://3.95.191.245:3000/public-dashboards/73a3db8240c743709db31da3b02e0d36
